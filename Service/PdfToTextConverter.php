@@ -5,29 +5,23 @@
 
 namespace Webgriffe\PdfToTextBundle\Service;
 
+use Alchemy\BinaryDriver\Configuration;
 use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
+use Webgriffe\PdfToTextBundle\BinaryDriver\PdfToTextDriver;
 
 class PdfToTextConverter
 {
+    const TIMEOUT = 60;
+
     public function convert($file)
     {
-        if (!$this->command_exist()) {
-            throw new \RuntimeException(
-                'Command pdftotext not found. ' .
-                'If you\'re on Mac OS X you can download it from http://www.bluem.net/en/mac/packages/.'
-            );
-        }
+        $configuration = new Configuration(array('timeout' => self::TIMEOUT));
+        $pdfToTextDriver = PdfToTextDriver::load('pdftotext', null, $configuration);
 
         if (!file_exists($file)) {
             throw new FileNotFoundException($file);
         }
 
-        return shell_exec(sprintf('pdftotext "%s" -', $file));
-    }
-
-    private function command_exist()
-    {
-        $returnVal = shell_exec("which pdftotext");
-        return (empty($returnVal) ? false : true);
+        return $pdfToTextDriver->command(array($file, '-'));
     }
 }
