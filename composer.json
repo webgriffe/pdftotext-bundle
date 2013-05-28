@@ -1,0 +1,22 @@
+{
+    "name": "webgriffe/pdftotext-bundle",
+    "description": "This bundle integrates Symfony2 with pdftotext binary command.",
+    "keywords": ["PDF", "pdf2text", "pdftotext"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name":     "Webgriffe®",
+            "homepage": "http://www.webgriffe.com",
+            "email":    "info@webgriffe.com"
+        }     
+    ],
+    "require": {
+        "php":             ">=5.3.0",
+        "symfony/symfony": ">=2.0"
+    },
+    "autoload": {
+        "psr-0": { "Webgriffe\\PdfToTextBundle": "" }
+    },
+    "target-dir": "Webgriffe/PdfToTextBundle"
+}
