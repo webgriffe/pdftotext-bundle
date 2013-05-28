@@ -1,7 +1,7 @@
 {
     "name": "webgriffe/pdftotext-bundle",
     "description": "This bundle integrates Symfony2 with pdftotext binary command.",
-    "keywords": ["PDF", "pdf2text", "pdftotext"],
+    "keywords": ["PDF", "pdf2text", "pdftotext", "symfony2"],
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
