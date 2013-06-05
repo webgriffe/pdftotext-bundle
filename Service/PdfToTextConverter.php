@@ -13,7 +13,7 @@ class PdfToTextConverter
 {
     const TIMEOUT = 60;
 
-    public function convert($file)
+    public function convert($file, $toEncoding = 'UTF-8')
     {
         $configuration = new Configuration(array('timeout' => self::TIMEOUT));
         $pdfToTextDriver = PdfToTextDriver::load('pdftotext', null, $configuration);
@@ -22,6 +22,13 @@ class PdfToTextConverter
             throw new FileNotFoundException($file);
         }
 
-        return $pdfToTextDriver->command(array($file, '-'));
+        $output = $pdfToTextDriver->command(array($file, '-'));
+        $fromEncoding = mb_detect_encoding($output);
+
+        if ($fromEncoding) {
+            return mb_convert_encoding($output, $toEncoding, $fromEncoding);
+        }
+
+        return mb_convert_encoding($output, $toEncoding);
     }
 }
