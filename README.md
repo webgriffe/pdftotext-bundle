@@ -1,7 +1,7 @@
-PDF to Text Symfony 2 Bundle
-============================
+PDF to Text Symfony2 Bundle
+===========================
 
-This simple Symfony 2 bundle allows you to convert an input PDF file into plain text.
+This Symfony2 bundle allows you to convert an input PDF file into plain text.
 
 Conversion is made through `pdftotext` command-line utilty ([http://en.wikipedia.org/wiki/Pdftotext](http://en.wikipedia.org/wiki/Pdftotext)). `pdftotext` is part of [Xpdf](http://www.foolabs.com/xpdf/index.html) software suite, is included in many Linux distributions and that should be available also for Mac OS X and Windows platforms.
 
@@ -65,6 +65,10 @@ Simply, you can get the `PdfToTextConverter` from DIC and get the plain text str
 		
 		return new \Symfony\Component\HttpFoundation\Response($pdfText);
 	}
+	
+You can also specify the output encoding (default is `UTF-8`).
+
+	$pdfText = $pdfToTextConverter->convert($pdfFile, 'ISO-8859-1');
 
 
 Credits:
