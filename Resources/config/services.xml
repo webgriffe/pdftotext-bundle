@@ -9,6 +9,8 @@
     </parameters>
 
     <services>
-        <service id="webgriffe_pdf_to_text.converter" class="%webgriffe_pdf_to_text.converter.class%" />
+        <service id="webgriffe_pdf_to_text.converter" class="%webgriffe_pdf_to_text.converter.class%">
+            <argument type="service" id="logger" />
+        </service>
     </services>
 </container>
