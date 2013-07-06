@@ -3,7 +3,7 @@
  * @author Manuele Menozzi <mmenozzi@webgriffe.com> 
  */
 
-namespace Webgriffe\PdfToTextBundle\Tests\Functional;
+namespace Webgriffe\PdfToTextBundle\Tests\Integration;
 
 
 use Webgriffe\PdfToTextBundle\Service\PdfToTextConverter;
