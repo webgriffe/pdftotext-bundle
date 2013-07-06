@@ -7,7 +7,7 @@ Conversion is made through `pdftotext` command-line utilty ([http://en.wikipedia
 
 Installation
 ------------
-Install this bundle as any other Symfony 2 bundle.
+Install this bundle as any other Symfony2 bundle.
 
 ### Symfony >= 2.1.x
 Add the following requirement to your `composer.json`:
@@ -71,8 +71,8 @@ You can also specify the output encoding (default is `UTF-8`).
 	$pdfText = $pdfToTextConverter->convert($pdfFile, 'ISO-8859-1');
 
 
-Credits:
---------
+Credits
+-------
 
 This bundle has been developed by [Webgriffe®](http://www.webgriffe.com). Please, report to us any bug or suggestion by GitHub issues.
 
