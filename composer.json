@@ -21,5 +21,8 @@
     "autoload": {
         "psr-0": { "Webgriffe\\PdfToTextBundle": "" }
     },
-    "target-dir": "Webgriffe/PdfToTextBundle"
+    "target-dir": "Webgriffe/PdfToTextBundle",
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    }
 }
