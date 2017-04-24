@@ -70,6 +70,15 @@ You can also specify the output encoding (default is `UTF-8`).
 
 	$pdfText = $pdfToTextConverter->convert($pdfFile, 'ISO-8859-1');
 
+Specify pdftotext binary path
+-----------------------------
+
+You can specify the `pdftotext` binary path in your `config.yml`:
+
+```yml
+webgriffe_pdf_to_text:
+    bin_path: /usr/local/bin/pdftotext
+```
 
 Credits
 -------

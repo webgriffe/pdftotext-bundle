@@ -19,10 +19,20 @@ class PdfToTextConverter
      * @var LoggerInterface
      */
     private $logger;
+    /**
+     * @var string
+     */
+    private $binPath;
 
-    public function __construct(LoggerInterface $logger)
+    /**
+     * PdfToTextConverter constructor.
+     * @param LoggerInterface $logger
+     * @param string $binPath
+     */
+    public function __construct(LoggerInterface $logger, $binPath)
     {
         $this->logger = $logger;
+        $this->binPath = $binPath;
     }
 
     public function convert($file, $toEncoding = 'UTF-8')
@@ -32,7 +42,7 @@ class PdfToTextConverter
         }
 
         $configuration = new Configuration(array('timeout' => self::TIMEOUT));
-        $pdfToTextDriver = PdfToTextDriver::load('pdftotext', $this->logger, $configuration);
+        $pdfToTextDriver = PdfToTextDriver::load($this->binPath, $this->logger, $configuration);
 
         $debugListener = new DebugListener('[STDOUT] ', '[STDERR] ', 'stdout', 'stderr');
         $pdfToTextDriver->listen($debugListener);
@@ -54,5 +64,13 @@ class PdfToTextConverter
             return;
         }
         $this->logger->debug($line);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBinPath()
+    {
+        return $this->binPath;
     }
 }

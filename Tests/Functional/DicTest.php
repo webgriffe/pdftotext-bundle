@@ -17,6 +17,7 @@ class DicTest extends WebTestCase
 
         $converter = $kernel->getContainer()->get('webgriffe_pdf_to_text.converter');
         $this->assertInstanceOf('Webgriffe\PdfToTextBundle\Service\PdfToTextConverter', $converter);
+        $this->assertEquals('/usr/local/bin/pdftotext', $converter->getBinPath());
     }
 
 }

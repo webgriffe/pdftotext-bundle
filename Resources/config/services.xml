@@ -11,6 +11,7 @@
     <services>
         <service id="webgriffe_pdf_to_text.converter" class="%webgriffe_pdf_to_text.converter.class%">
             <argument type="service" id="logger" />
+            <argument/> <!-- will be defined by bin_path config -->
         </service>
     </services>
 </container>

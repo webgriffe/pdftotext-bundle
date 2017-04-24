@@ -17,7 +17,7 @@ class PdfToTextConverterTest extends \PHPUnit_Framework_TestCase
             ->expects($this->exactly(2))
             ->method('info');
 
-        $converter = new PdfToTextConverter($logger);
+        $converter = new PdfToTextConverter($logger, 'pdftotext');
         $output = $converter->convert(__DIR__ . '/dummy_document.pdf');
 
         $this->assertContains('THIS IS A DUMMY DOCUMENT', $output);
@@ -33,7 +33,7 @@ class PdfToTextConverterTest extends \PHPUnit_Framework_TestCase
 
         $this->setExpectedException('Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException');
 
-        $converter = new PdfToTextConverter($logger);
+        $converter = new PdfToTextConverter($logger, 'pdftotext');
         $converter->convert(__DIR__ . '/nonexistentfile.pdf');
     }
 
@@ -52,7 +52,7 @@ class PdfToTextConverterTest extends \PHPUnit_Framework_TestCase
 
         $this->expectException('\Alchemy\BinaryDriver\Exception\ExecutionFailureException');
 
-        $converter = new PdfToTextConverter($logger);
+        $converter = new PdfToTextConverter($logger, 'pdftotext');
         $converter->convert(__DIR__ . '/non pdf document.docx');
     }
 

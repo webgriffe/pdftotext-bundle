@@ -6,3 +6,6 @@ framework:
     default_locale: en
     translator: { fallback: en }
     profiler: { only_exceptions: false }
+
+webgriffe_pdf_to_text:
+    bin_path: /usr/local/bin/pdftotext
