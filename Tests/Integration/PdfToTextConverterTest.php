@@ -12,7 +12,7 @@ class PdfToTextConverterTest extends \PHPUnit_Framework_TestCase
 {
     public function testConvert()
     {
-        $logger = $this->getMock('\Psr\Log\LoggerInterface');
+        $logger = $this->createMock('\Psr\Log\LoggerInterface');
         $logger
             ->expects($this->exactly(2))
             ->method('info');
@@ -26,7 +26,7 @@ class PdfToTextConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testConvertWithNonExistentFile()
     {
-        $logger = $this->getMock('\Psr\Log\LoggerInterface');
+        $logger = $this->createMock('\Psr\Log\LoggerInterface');
         $logger
             ->expects($this->never())
             ->method($this->anything());
@@ -39,7 +39,7 @@ class PdfToTextConverterTest extends \PHPUnit_Framework_TestCase
 
     public function testWithNonPdfFile()
     {
-        $logger = $this->getMock('\Psr\Log\LoggerInterface');
+        $logger = $this->createMock('\Psr\Log\LoggerInterface');
         $logger
             ->expects($this->exactly(1))
             ->method('info');
@@ -50,7 +50,7 @@ class PdfToTextConverterTest extends \PHPUnit_Framework_TestCase
             ->expects($this->exactly(5))
             ->method('debug');
 
-        $this->setExpectedException('\Alchemy\BinaryDriver\Exception\ExecutionFailureException');
+        $this->expectException('\Alchemy\BinaryDriver\Exception\ExecutionFailureException');
 
         $converter = new PdfToTextConverter($logger);
         $converter->convert(__DIR__ . '/non pdf document.docx');
